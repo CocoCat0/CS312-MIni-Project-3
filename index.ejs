@@ -1,0 +1,52 @@
+<!--Declaring Default HTML-->
+<!DOCTYPE html>
+<html>
+
+<!--HEAD-->
+<head>
+<!--Declaring title, web views, and css relation-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<!--BODY-->
+<body>
+    <!--Title of the Body, Posts, Display of posts-->
+    <h1>Blog Home</h1>
+
+    <!--sign in-->
+    <a href="/signin" style="font-size: 20px; padding: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Sign In</a>
+
+    <!-- using the form function to have user fill out form: name, title, content and submit button -->
+    <form action="/createPost" method="POST">
+        <input type="text" name="name" placeholder="Your Name"><br>
+        <input type="text" name="title" placeholder="Post Title" required><br>
+        <textarea name="content" placeholder="Post Content" required rows="25" cols="50"></textarea><br>
+        <button type="submit">Create Post</button>
+    </form>
+
+    <!-- Displaying the posts -->
+    <% if (posts.length > 0) { %>
+        <ul>
+            <% posts.forEach((post) => { %>
+                <li>
+                    <h2><%= post.title %></h2>
+                    <p><%= post.content %></p>
+                    <small>By <%= post.creator_name %> on <%= new Date(post.date_created).toLocaleString() %></small><br><br>
+                    <a href="/editPost/<%= post.id %>" style="font-size:30px;">Edit</a><br><br>
+                    <form action="/deletePost/<%= post.id %>" method="POST" style="display:inline;">
+                        <button type="submit" style="font-size:30px;">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+
+    <!--If there is no posts, print no posts message-->
+    <% } else { %>
+        <p>No posts available.</p>
+    <% } %>
+</body>
+</html>

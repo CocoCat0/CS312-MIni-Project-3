@@ -1,0 +1,25 @@
+<!--Declaring Default HTML-->
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<!--HEAD: Web view, title, link to styles-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Delete Post</title>
+</head>
+
+<!--BODY: Deletes post, and returns back home -->
+<body>
+    <h1>Delete Post</h1>
+    <p>Do you want to delete the selected post?</p>
+    <h2><%= post.title %></h2>
+    <p><%= post.content %></p>
+    <form action="/deletePost/<%= id %>" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/" style="text-align:center;">Back to Home</a>
+</body>
+</html>

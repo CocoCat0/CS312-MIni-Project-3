@@ -1,0 +1,25 @@
+<!--Declaring Default HTML-->
+<!DOCTYPE html>
+<html>
+
+<!--HEAD: Web view, title, link to styles-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<!--BODY: web title, Edit post, button, back home-->
+<body>
+    <h1>Edit Post</h1>
+
+    <form action="/updatePost/<%= id %>" method="POST">
+        <input type="text" name="title" value="<%= post.title %>" required>
+        <textarea name="content" required><%= post.content %></textarea>
+        <button type="submit">Update Post</button>
+    </form>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
